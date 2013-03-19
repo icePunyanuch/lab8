@@ -1,4 +1,3 @@
-
 from Tkinter import *
 
 class PaintBox( Frame ):
@@ -21,7 +20,7 @@ class PaintBox( Frame ):
    def paint( self, event ):
       x1, y1 = ( event.x - 4 ), ( event.y - 4 )
       x2, y2 = ( event.x + 4 ), ( event.y + 4 )
-      self.myCanvas.create_oval( x1, y1, x2, y2, fill = "red" )
+      self.myCanvas.create_oval( x1, y1, x2, y2, fill = "black" )
    
 def main():
    PaintBox().mainloop()
