@@ -8,19 +8,34 @@ class PaintBox( Frame ):
       self.master.geometry( "300x150" )
 
       self.message = Label( self, text = "Drag the mouse to draw" )
-      self.message.pack( side = BOTTOM )
       
-      # create Canvas component
+      self.b = Button(self, text="Clear", command=self.clear)
+      
+      self.b.pack( side = BOTTOM )
+      self.message.pack(side = BOTTOM)
+     # create Canvas component
       self.myCanvas = Canvas( self )
       self.myCanvas.pack( expand = YES, fill = BOTH )
 
       # bind mouse dragging event to Canvas
       self.myCanvas.bind( "<B1-Motion>", self.paint )
+      
 
    def paint( self, event ):
-      x1, y1 = ( event.x - 4 ), ( event.y - 4 )
-      x2, y2 = ( event.x + 4 ), ( event.y + 4 )
-      self.myCanvas.create_oval( x1, y1, x2, y2, fill = "black" )
+       x1, y1 = ( event.x - 4 ), ( event.y - 4 )
+       x2, y2 = ( event.x + 4 ), ( event.y + 4 )
+       self.myCanvas.create_oval( x1, y1, x2, y2, fill = "black" )
+   
+   def clear(self):
+       self.myCanvas.destroy()
+       
+       # create Canvas component
+       self.myCanvas = Canvas( self )
+       self.myCanvas.pack( expand = YES, fill = BOTH )
+
+      # bind mouse dragging event to Canvas
+       self.myCanvas.bind( "<B1-Motion>", self.paint )
+       
    
 def main():
    PaintBox().mainloop()
